@@ -17,6 +17,20 @@ public class Game extends Actor
    public static boolean inBattle = false;
    
    
+   public static void play(String filename)
+	{
+	    try
+	    {
+	        Clip clip = AudioSystem.getClip();
+	        clip.open(AudioSystem.getAudioInputStream(new File(filename)));
+	        clip.start();
+	    }
+	    catch (Exception exc)
+	    {
+	        exc.printStackTrace(System.out);
+	    }
+	}
+   
    public static void main(String[] args) 
    {
 	   int num = 0;
@@ -34,10 +48,12 @@ public class Game extends Actor
 	   AmongUs a = new AmongUs();
 	   Dog d = new Dog();
 	   Rat rat = new Rat();
+	   Tree alice=new Tree();
 	   world.add(new Location(10,10),r);
 	   world.add(new Location(15,15), a);
 	   world.add(new Location(5,5), d);
 	   world.add(new Location(3,7), rat);
+	   world.add(new Location(2,5), alice);
 		for(int x = 0; x < 15; x++)
 		{
 			num = x % 4;
